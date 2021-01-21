@@ -13,8 +13,10 @@ struct WifiGornaApp: App {
 
     var body: some Scene {
         WindowGroup {
+            let setting = ImagePhoto()
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(setting)
         }
     }
 }
