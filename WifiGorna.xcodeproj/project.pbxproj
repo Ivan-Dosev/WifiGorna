@@ -24,6 +24,7 @@
 		CC416D2925B6FA5500FA9B8E /* CryptoData_Array+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D2725B6FA5500FA9B8E /* CryptoData_Array+CoreDataProperties.swift */; };
 		CC416D3425B72FFA00FA9B8E /* ForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D3325B72FFA00FA9B8E /* ForView.swift */; };
 		CC416D9625B97C2200FA9B8E /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D9525B97C2200FA9B8E /* BlockView.swift */; };
+		CC416D9D25B9DF7200FA9B8E /* BlockWiFiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		CC416D2725B6FA5500FA9B8E /* CryptoData_Array+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CryptoData_Array+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CC416D3325B72FFA00FA9B8E /* ForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForView.swift; sourceTree = "<group>"; };
 		CC416D9525B97C2200FA9B8E /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
+		CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockWiFiView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,9 +164,8 @@
 			children = (
 				CC416C3025B4365F00FA9B8E /* Button.swift */,
 				CC416C2B25B434AB00FA9B8E /* FirstView.swift */,
-				CC416C3625B4390100FA9B8E /* SendView.swift */,
-				CC416C3E25B4396A00FA9B8E /* DataView.swift */,
-				CC416D9525B97C2200FA9B8E /* BlockView.swift */,
+				CC416D9B25B9DF0D00FA9B8E /* Send */,
+				CC416D9A25B9DEEE00FA9B8E /* Data */,
 				CC416D3325B72FFA00FA9B8E /* ForView.swift */,
 				CC416C9725B4977D00FA9B8E /* Image */,
 			);
@@ -177,6 +178,24 @@
 				CC416C9B25B4981F00FA9B8E /* ImageView.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		CC416D9A25B9DEEE00FA9B8E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CC416C3E25B4396A00FA9B8E /* DataView.swift */,
+				CC416D9525B97C2200FA9B8E /* BlockView.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CC416D9B25B9DF0D00FA9B8E /* Send */ = {
+			isa = PBXGroup;
+			children = (
+				CC416C3625B4390100FA9B8E /* SendView.swift */,
+				CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */,
+			);
+			path = Send;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +338,7 @@
 				CC416C3125B4365F00FA9B8E /* Button.swift in Sources */,
 				CC416BF625B42FFB00FA9B8E /* WifiGorna.xcdatamodeld in Sources */,
 				CC416C2025B431AF00FA9B8E /* Persistence.swift in Sources */,
+				CC416D9D25B9DF7200FA9B8E /* BlockWiFiView.swift in Sources */,
 				CC416BEC25B42FFB00FA9B8E /* ContentView.swift in Sources */,
 				CC416BEA25B42FFB00FA9B8E /* WifiGornaApp.swift in Sources */,
 			);

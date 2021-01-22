@@ -131,6 +131,9 @@ struct DataView: View {
                     }
                         ForEach(Array(zip(cryptoDataArray.indices ,cryptoDataArray )), id:\.0) { ( number , index ) in
                             BlockView(number: number, crypto: index)
+                                .onTapGesture {
+                                    deleteItem(indexSet: number)
+                                }
                  
         //                        .offset(y: -11)
                         }
@@ -172,6 +175,10 @@ struct DataView: View {
                     }
                         ForEach(Array(zip(cryptoDataArray.indices ,cryptoDataArray.filter{$0.index_F?.contains(String(self.pickerNumber)) as! Bool})),id:\.0) { ( number , index ) in
                             BlockView(number: number, crypto: index)
+                            .onTapGesture {
+                                image = UIImage(data: index.crypt_Date!)
+                                pMode.wrappedValue.dismiss()
+                            }
                       
         //                        .offset(y: -11)
                         }
@@ -182,6 +189,7 @@ struct DataView: View {
                                 .frame(width: UIScreen.main.bounds.width / 4.1 , height: height)
                                 .overlay(BlockBottom().stroke(lineWidth: height == 140 ? 5 : 2).foregroundColor(Color(gray)))
                                 .padding(.horizontal, 20)
+
                             Spacer()
                         }
                         HStack{
@@ -317,8 +325,8 @@ struct DataView: View {
 //        }
 //    }
     
-    func deleteItem(indexSet: IndexSet) {
-        let deleteItem = self.cryptoDataArray[indexSet.first!]
+    func deleteItem(indexSet: Int) {
+        let deleteItem = self.cryptoDataArray[indexSet]
                          self.moc.delete(deleteItem)
         
         do{ try! self.moc.save() }

@@ -27,8 +27,15 @@ struct BlockView: View {
  
     @State var gray  = UIColor(red: 0.4  , green: 0.4  , blue: 0.4  , alpha: 1)
     @State var gray1 = UIColor(red: 0.937, green: 0.937, blue: 0.937, alpha: 1)
-    @State var gray2  = UIColor(red: 1  , green: 1  , blue: 1  , alpha: 1)
-    @State var gray0  = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1)
+//    cherven
+//    @State var gray2  = UIColor(red: 1  , green: 1  , blue: 1  , alpha: 1)
+//    @State var gray2  = UIColor(red: 0.957  , green: 0.8  , blue: 0.8  , alpha: 1)
+    @State var gray2  = UIColor(red: 1  , green: 0.796  , blue: 0.643  , alpha: 1)
+    
+//  zelen
+//    @State var gray0  = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1)
+//      @State var gray0  = UIColor(red: 0.851, green: 0.918, blue: 0.827, alpha: 1)
+    @State var gray0  = UIColor(red: 0.678, green: 0.663, blue: 0.431, alpha: 1)
 
 
     
@@ -37,7 +44,7 @@ struct BlockView: View {
         ZStack {
             HStack {
                 Block()
-                    .fill(index == 0 ? Color(gray0) : index == 1 ? Color(gray1) : Color(gray2))
+                    .fill(index == 3 ? Color(gray0) : index == 1 ? Color(gray1) : Color(gray2))
                     .frame(width: UIScreen.main.bounds.width / 4.1 , height: height)
                     .overlay(Block().stroke(lineWidth: height == 140 ? 5 : 2).foregroundColor(Color(gray)))
                     .padding(.horizontal, 20)
@@ -45,13 +52,15 @@ struct BlockView: View {
             }
 
             HStack{
-                Image("kluch\(index)")
+
+                Image("klu\(index)")
                     .resizable()
                     .offset(x: 40)
-                    .frame(width: index == 1 ? 30 : 20, height: 20)
+//                    .frame(width:  50, height: 50)
+                    .frame(width: index == 1 ? 50 : 30, height: index == 1 ? 50 : 40)
                 Text("\(crypto.name_Title!)")
                     .fontWeight(.bold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(index == 3 ? .white : .black)
                     .offset(x: index == 1 ? 50 : 70)
                 Spacer()
             }
