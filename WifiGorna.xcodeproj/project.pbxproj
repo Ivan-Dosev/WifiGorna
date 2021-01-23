@@ -25,6 +25,8 @@
 		CC416D3425B72FFA00FA9B8E /* ForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D3325B72FFA00FA9B8E /* ForView.swift */; };
 		CC416D9625B97C2200FA9B8E /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D9525B97C2200FA9B8E /* BlockView.swift */; };
 		CC416D9D25B9DF7200FA9B8E /* BlockWiFiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */; };
+		CC416DAE25BA8C8A00FA9B8E /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416DAD25BA8C8A00FA9B8E /* ColorService.swift */; };
+		CC416DB325BA8CC400FA9B8E /* ColorSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416DB225BA8CC400FA9B8E /* ColorSwitch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		CC416D3325B72FFA00FA9B8E /* ForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForView.swift; sourceTree = "<group>"; };
 		CC416D9525B97C2200FA9B8E /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
 		CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockWiFiView.swift; sourceTree = "<group>"; };
+		CC416DAD25BA8C8A00FA9B8E /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorService.swift; path = ../../../../../ProbaBlockChane/ProbaBlockChane/ColorService.swift; sourceTree = "<group>"; };
+		CC416DB225BA8CC400FA9B8E /* ColorSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorSwitch.swift; path = ../../../../../ProbaBlockChane/ProbaBlockChane/ColorSwitch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +198,18 @@
 			children = (
 				CC416C3625B4390100FA9B8E /* SendView.swift */,
 				CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */,
+				CC416DAC25BA8C4200FA9B8E /* WiFi Model */,
 			);
 			path = Send;
+			sourceTree = "<group>";
+		};
+		CC416DAC25BA8C4200FA9B8E /* WiFi Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC416DAD25BA8C8A00FA9B8E /* ColorService.swift */,
+				CC416DB225BA8CC400FA9B8E /* ColorSwitch.swift */,
+			);
+			path = "WiFi Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,9 +350,11 @@
 				CC416C3F25B4396A00FA9B8E /* DataView.swift in Sources */,
 				CC416C3725B4390100FA9B8E /* SendView.swift in Sources */,
 				CC416C3125B4365F00FA9B8E /* Button.swift in Sources */,
+				CC416DAE25BA8C8A00FA9B8E /* ColorService.swift in Sources */,
 				CC416BF625B42FFB00FA9B8E /* WifiGorna.xcdatamodeld in Sources */,
 				CC416C2025B431AF00FA9B8E /* Persistence.swift in Sources */,
 				CC416D9D25B9DF7200FA9B8E /* BlockWiFiView.swift in Sources */,
+				CC416DB325BA8CC400FA9B8E /* ColorSwitch.swift in Sources */,
 				CC416BEC25B42FFB00FA9B8E /* ContentView.swift in Sources */,
 				CC416BEA25B42FFB00FA9B8E /* WifiGornaApp.swift in Sources */,
 			);

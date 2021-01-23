@@ -9,6 +9,12 @@ import SwiftUI
 
 struct SendView: View {
     
+    @ObservedObject var colorService = ColorService()
+    @Binding var image : UIImage?
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: CryptoData_Array.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \CryptoData_Array.data_event, ascending: true)]) var cryptoDataArray: FetchedResults<CryptoData_Array>
+    
     @Environment(\.presentationMode) var pMode
     @State var grayTop = UIColor(red: 0.718, green: 0.718, blue: 0.718, alpha: 1)
     @State var gray  = UIColor(red: 0.4  , green: 0.4  , blue: 0.4  , alpha: 1)
@@ -35,6 +41,9 @@ struct SendView: View {
     @State var dateNow    : Date = Date()
     @State var dateFutuer : Date = Date()
     @State var selectedDateText : String = ""
+    @State var text : String = ""
+    @State var isOnOffSend : Bool = false
+    @State var ardaImage : Image = Image("png1")
     
     var body: some View {
         
@@ -54,6 +63,20 @@ struct SendView: View {
                             .modifier(PrimaryButton())
                     }
                     Spacer()
+
+                    Button(action: {
+                            self.isOnOffSend.toggle()
+                    }) {
+                        HStack {
+                            Text("Send")
+                                .font(.system(size: 17))
+                            Text( isOnOffSend ? "🔵" : "🔘")
+                                .font(.system(size: 17))
+
+                        }
+                        .frame(width: UIScreen.main.bounds.width / 4 , height: 50, alignment: .center)
+                        .modifier(PrimaryButton())
+                    }
                 }
                 .offset(y: 10)
                 .frame(width: UIScreen.main.bounds.width / 1.1 ,  height: 100, alignment: .center)
@@ -109,6 +132,41 @@ struct SendView: View {
                             }
                         }
 //                        for
+                        
+                        ForEach(colorService.peers, id:\.self) { peer in
+                            ZStack{
+                                BlockWiFiView(peer: peer)
+                                    .onAppear(){
+                                        self.colorService.delegate = self
+                                        colorService.invitePeer(peer)
+                                    }
+                                    
+                                if self.isOnOffSend {
+                                    Button(action: {
+//                                        let imageToData = UIImage(named: "Ok")
+                                        let data = image?.jpegData(compressionQuality: 1.0)
+//                                        let data = "arda varda 1111".data(using: .utf8)
+    //                                    colorService.send(colorName: data!)
+                                        colorService.sendToFistPeer(data: data!, peerID: peer)
+                                        print("tap ..")
+                                        
+                                    }) {
+                                        HStack {
+                                            Spacer()
+                                            Text(" 🐱 ")
+                                                .padding()
+                                                .frame(width: height , height: height * 0.5, alignment: .center)
+                                                .overlay(RoundedRectangle(cornerRadius: 3).stroke(lineWidth: 1).foregroundColor(Color(gray)))
+                                                .offset(x: -height / 2)
+                                        }
+                                    }
+                                }
+//  end if
+                            }
+
+                        }
+                        
+                        
                         ZStack {
                             HStack{
                                 BlockBottom()
@@ -128,8 +186,15 @@ struct SendView: View {
                     }
                     
                 }
+                Text("arda - \(text)")
+                 ardaImage
+                    .resizable()
+                    .frame(width: 100, height: 100, alignment: .center)
             }.onAppear(){
                 setDateString()
+            }
+            .onDisappear(){
+                colorService.stopService()
             }
           
         }
@@ -143,6 +208,7 @@ struct SendView: View {
 
 struct SendView_Previews: PreviewProvider {
     static var previews: some View {
-        SendView()
+//        SendView()
+          Text("")
     }
 }

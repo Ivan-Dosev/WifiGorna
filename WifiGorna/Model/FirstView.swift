@@ -13,7 +13,7 @@ struct FirstView: View {
     @State var image        : Image?
     @State var showingImage : Bool = false
     @State var inportImage  : UIImage?
-    
+
 
     @Environment(\.managedObjectContext) var moc
 
@@ -60,21 +60,24 @@ struct FirstView: View {
                 .modifier(PrimaryButton())
 
 
-                
+
                     
                 Spacer()
                 VStack( spacing: 50) {
-                    Button(action: {
-                        self.isSend.toggle()
-                    }) {
-                        Text("Send Scypto Data")
-                            .font(.system(size: 27))
-                            .frame(width: UIScreen.main.bounds.width / 1.2 , height: 100)
-                            .modifier(PrimaryButton())
-                         
-                    }
-                    .sheet(isPresented: self.$isSend, content: { SendView() })
                     
+                    if inportImage != nil {
+                        Button(action: {
+                            self.isSend.toggle()
+                        }) {
+                            Text("Send Scypto Data")
+                                .font(.system(size: 27))
+                                .frame(width: UIScreen.main.bounds.width / 1.2 , height: 100)
+                                .modifier(PrimaryButton())
+                             
+                        }
+                        .sheet(isPresented: self.$isSend, onDismiss: loadImage) { SendView(image: $inportImage) }
+                    }
+
                     
                     Button(action: {
                         self.isView.toggle()
@@ -91,10 +94,12 @@ struct FirstView: View {
             }
         }
     }
+    
     func loadImage() {
         guard let inportImage = inportImage else {return}
             image = Image(uiImage: inportImage)
     }
+    
 }
 
 struct FirstView_Previews: PreviewProvider {

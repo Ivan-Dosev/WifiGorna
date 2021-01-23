@@ -303,9 +303,7 @@ struct DataView: View {
 
         do {
             try self.moc.save()
-        }catch {
-            
-        }
+        }catch {}
     }
     
 //    func saveA() {
