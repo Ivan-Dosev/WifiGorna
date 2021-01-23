@@ -93,6 +93,9 @@ struct FirstView: View {
                 }
             }
         }
+        .onAppear(){
+            inportImage = UIImage(named: "Ok")
+        }
     }
     
     func loadImage() {

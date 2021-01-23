@@ -43,6 +43,7 @@ struct SendView: View {
     @State var selectedDateText : String = ""
     @State var text : String = ""
     @State var isOnOffSend : Bool = false
+    @State var isOk        : Bool = false
     @State var ardaImage : Image = Image("png1")
     
     var body: some View {
@@ -140,7 +141,17 @@ struct SendView: View {
                                         self.colorService.delegate = self
                                         colorService.invitePeer(peer)
                                     }
-                                    
+                                if isOk {
+                                    HStack{
+                                        Image("klu1")
+                                            .resizable()
+                                            .offset(x: 40)
+                                            .frame(width:  50 , height:  50 )
+                                        Spacer()
+                                    }
+                                }
+                                
+                                
                                 if self.isOnOffSend {
                                     Button(action: {
 //                                        let imageToData = UIImage(named: "Ok")
@@ -186,10 +197,10 @@ struct SendView: View {
                     }
                     
                 }
-                Text("arda - \(text)")
-                 ardaImage
-                    .resizable()
-                    .frame(width: 100, height: 100, alignment: .center)
+//                Text("arda - \(text)")
+//                 ardaImage
+//                    .resizable()
+//                    .frame(width: 100, height: 100, alignment: .center)
             }.onAppear(){
                 setDateString()
             }
