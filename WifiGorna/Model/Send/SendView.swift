@@ -180,7 +180,8 @@ struct SendView: View {
                                         let data = image?.jpegData(compressionQuality: 1.0)
 //                                        let data = "arda varda 1111".data(using: .utf8)
     //                                    colorService.send(colorName: data!)
-                                        colorService.sendToFistPeer(data: data!, peerID: peer)
+//                                        colorService.sendToFistPeer(data: data!, peerID: peer)
+                                        colorService.send(data: data!)
                                         print("tap ..")
                                         
                                     }) {
