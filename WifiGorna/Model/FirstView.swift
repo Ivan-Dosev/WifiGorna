@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FirstView: View {
     
+ 
     @State var image        : Image?
     @State var showingImage : Bool = false
     @State var inportImage  : UIImage?
@@ -95,6 +96,7 @@ struct FirstView: View {
         }
         .onAppear(){
             inportImage = UIImage(named: "Ok")
+  
         }
     }
     

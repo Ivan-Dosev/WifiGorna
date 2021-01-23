@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CryptoKit
+import MultipeerConnectivity
 
 struct SendView: View {
     
     @ObservedObject var colorService = ColorService()
+    @State var peerString : String = ""
     @Binding var image : UIImage?
     
     @Environment(\.managedObjectContext) var moc
@@ -19,14 +22,9 @@ struct SendView: View {
     @State var grayTop = UIColor(red: 0.718, green: 0.718, blue: 0.718, alpha: 1)
     @State var gray  = UIColor(red: 0.4  , green: 0.4  , blue: 0.4  , alpha: 1)
     @State var gray1 = UIColor(red: 0.937, green: 0.937, blue: 0.937, alpha: 1)
-//    cherven
-//    @State var gray2  = UIColor(red: 1  , green: 1  , blue: 1  , alpha: 1)
-//    @State var gray2  = UIColor(red: 0.957  , green: 0.8  , blue: 0.8  , alpha: 1)
+
     @State var gray2  = UIColor(red: 1  , green: 0.796  , blue: 0.643  , alpha: 1)
-    
-//  zelen
-//    @State var gray0  = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1)
-//      @State var gray0  = UIColor(red: 0.851, green: 0.918, blue: 0.827, alpha: 1)
+
     @State var gray0  = UIColor(red: 0.678, green: 0.663, blue: 0.431, alpha: 1)
     
     var height : CGFloat {
@@ -37,6 +35,30 @@ struct SendView: View {
             return 140
         }
     }
+    
+    var privateID_Key : Curve25519.Signing.PrivateKey {
+     
+         if let data = UserDefaults.standard.data(forKey: "PrivateKey") {
+             
+               return try! Curve25519.Signing.PrivateKey(rawRepresentation: data)
+             
+         }else{
+               let kay = Curve25519.Signing.PrivateKey()
+                         UserDefaults.standard.set( kay.rawRepresentation, forKey: "PrivateKey")
+            return kay
+         }
+     }
+     var privateAgreement_Key : Curve25519.KeyAgreement.PrivateKey {
+         if let data = UserDefaults.standard.data(forKey: "AgreementKey") {
+             
+             return try! Curve25519.KeyAgreement.PrivateKey(rawRepresentation: data)
+             
+         }else{
+             let kay = Curve25519.KeyAgreement.PrivateKey()
+                         UserDefaults.standard.set( kay.rawRepresentation, forKey: "AgreementKey")
+            return kay
+         }
+     }
     
     @State var dateNow    : Date = Date()
     @State var dateFutuer : Date = Date()
@@ -141,7 +163,7 @@ struct SendView: View {
                                         self.colorService.delegate = self
                                         colorService.invitePeer(peer)
                                     }
-                                if isOk {
+                                if isOk && self.peerString == peer.displayName{
                                     HStack{
                                         Image("klu1")
                                             .resizable()
