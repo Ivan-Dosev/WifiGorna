@@ -48,29 +48,32 @@ extension SendView : ColorServiceDelegate {
                 if !dataFromModel.peerID.isEmpty {
 
                     if dataFromModel.isSender {
-
+                        self.signing__ID  = dataFromModel.peerID
                         self.signingID = String(decoding: dataFromModel.peerID, as: UTF8.self)
                           colorService.sendToFistPeer(data: keyAgreenentPublic(), peerID: peer)
 //                        colorService.send(colorName: keyAgreenentPublic())
                     }else {
-                        self.agreementID =  String(decoding: dataFromModel.peerID, as: UTF8.self)
+                        self.agreement__ID = dataFromModel.peerID
+                        self.agreementID   =  String(decoding: dataFromModel.peerID, as: UTF8.self)
 //                        send data
                           colorService.send(data: senderData())
-                          saveToCoreData()
+                          saveToCoreData(peer:  peer)
                     }
                 }
 
                 if !dataFromModel.massige.isEmpty {
                     
                     let formatter = DateFormatter()
-                    formatter.dateFormat = "MMM dd, yyyy"
+                    formatter.dateFormat = "HH:mm MMM dd, yyyy"
 //                    self.selectedDateText = formatter.string(from: self.dateNow)
                     
                     let textData = CryptoData_Array(context: moc)
-                        textData.name_Title = peer.displayName
-                        textData.crypt_Date = dataFromModel.massige
-                        textData.data_event = formatter.string(from: self.dateNow)
-                        textData.date_term = formatter.string(from: self.dateFutuer)
+                        textData.name_Title    = peer.displayName
+                        textData.key_agreement = self.agreement__ID
+                        textData.key_public    = self.signing__ID
+                        textData.crypt_Date    = dataFromModel.massige
+                        textData.data_event    = formatter.string(from: dataFromModel.dateNow)
+                        textData.date_term     = formatter.string(from: dataFromModel.dateFutuer)
                     if   self.signingID == "" {
                         textData.index_F   = String(2)
                     }else{
@@ -86,9 +89,17 @@ extension SendView : ColorServiceDelegate {
                     print("\(dataModel)")
        
                     ardaImage = Image(uiImage:  UIImage(data: dataFromModel.massige)!)
-       
-
+                    
+                    
+//                    colorService.sendToFistPeer(data: answerData(), peerID: peer)
                 }
+//            if dataFromModel.peerID.isEmpty && dataFromModel.massige.isEmpty {
+//                if !dataFromModel.isSender {
+//                    self.isAnswerOk = true
+//                    self.peerString = peer.displayName
+//                    
+//                }
+//            }
 
         }
     }
@@ -100,7 +111,9 @@ extension SendView : ColorServiceDelegate {
 
 struct Model   :  Codable {
    
-   var peerID   : Data
-   var massige  : Data
-   var isSender : Bool
+   var peerID     : Data
+   var massige    : Data
+   var isSender   : Bool
+   var dateNow    : Date
+   var dateFutuer : Date
 }

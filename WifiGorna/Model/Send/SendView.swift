@@ -62,7 +62,8 @@ struct SendView: View {
     
     @State var signingID       : String = ""
     @State var agreementID     : String = ""
-  
+    @State var agreement__ID   =  Data()
+    @State var signing__ID     =  Data()
     
     @State var dateNow    : Date = Date()
     @State var dateFutuer : Date = Date()
@@ -70,6 +71,7 @@ struct SendView: View {
     @State var text : String = ""
     @State var isOnOffSend : Bool = false
     @State var isOk        : Bool = false
+    @State var isAnswerOk  : Bool = false
     @State var ardaImage : Image = Image("png1")
     
     var body: some View {
@@ -167,6 +169,12 @@ struct SendView: View {
                                         self.colorService.delegate = self
                                         colorService.invitePeer(peer)
                                     }
+//                                if isAnswerOk && self.peerString == peer.displayName {
+//                                    HStack{
+//                                        Text("☑️")
+//                                        Spacer()
+//                                    }
+//                                }
                                 if isOk && self.peerString == peer.displayName{
                                     HStack{
                                         Image("klu1")
@@ -249,13 +257,13 @@ struct SendView: View {
     }
     
     func senderSigningPublic() -> Data {
-        let model = Model(peerID: privateID_Key.publicKey.rawRepresentation, massige: Data(),isSender: true)
+        let model = Model(peerID: privateID_Key.publicKey.rawRepresentation, massige: Data(),isSender: true ,dateNow: dateNow, dateFutuer: dateFutuer)
         let modelData = try! JSONEncoder().encode(model)
        return modelData
     }
     
     func keyAgreenentPublic() -> Data {
-        let model = Model(peerID: privateAgreement_Key.publicKey.rawRepresentation, massige: Data(),isSender: false)
+        let model = Model(peerID: privateAgreement_Key.publicKey.rawRepresentation, massige: Data(),isSender: false,dateNow: dateNow, dateFutuer: dateFutuer)
         let modelData = try! JSONEncoder().encode(model)
        return modelData
     }
@@ -264,20 +272,22 @@ struct SendView: View {
         
         let data = image?.jpegData(compressionQuality: 1.0)
         
-        let model = Model(peerID: Data(), massige: data!, isSender: true)
+        let model = Model(peerID: Data(), massige: data!, isSender: true,dateNow: dateNow, dateFutuer: dateFutuer)
         
         let modelData = try! JSONEncoder().encode(model)
        return modelData
     }
-    func saveToCoreData() {
+    func saveToCoreData(peer : MCPeerID) {
         let data = image?.jpegData(compressionQuality: 1.0)
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd, yyyy"
+        formatter.dateFormat = "HH:mm MMM dd, yyyy"
 //                    self.selectedDateText = formatter.string(from: self.dateNow)
         
         let textData = CryptoData_Array(context: moc)
-            textData.name_Title = "My Phone Send"
+            textData.name_Title = peer.displayName
+            textData.key_agreement = self.agreement__ID
+            textData.key_public    = self.signing__ID
             textData.crypt_Date = data
             textData.data_event = formatter.string(from: self.dateNow)
             textData.date_term = formatter.string(from: self.dateFutuer)
@@ -289,9 +299,15 @@ struct SendView: View {
         }catch {}
     }
     
+//    func answerData() -> Data {
+//        let model = Model(peerID: Data(), massige: Data(), isSender: true,dateNow: dateNow, dateFutuer: dateFutuer)
+//        let modelData = try! JSONEncoder().encode(model)
+//       return modelData
+//    }
+    
     private func setDateString() {
       let formatter = DateFormatter()
-      formatter.dateFormat = "MMM dd, yyyy"
+      formatter.dateFormat = "HH:mm MMM dd, yyyy"
       self.selectedDateText = formatter.string(from: self.dateNow)
     }
 }

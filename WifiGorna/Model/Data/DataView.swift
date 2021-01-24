@@ -21,7 +21,8 @@ struct DataView: View {
             return 140
         }
     }
-    
+    @State var agreem : String = ""
+    @State var publik : String = ""
     @State var arda :[Int] = [ 2 , 1 , 2 , 1 , 0 , 0, 1 , 2, 2]
     @State var gray     = UIColor(red: 0.4  , green: 0.4  , blue: 0.4  , alpha: 1)
     @State var grayTop = UIColor(red: 0.718, green: 0.718, blue: 0.718, alpha: 1)
@@ -176,9 +177,19 @@ struct DataView: View {
                         ForEach(Array(zip(cryptoDataArray.indices ,cryptoDataArray.filter{$0.index_F?.contains(String(self.pickerNumber)) as! Bool})),id:\.0) { ( number , index ) in
                             BlockView(number: number, crypto: index)
                             .onTapGesture {
-                                image = UIImage(data: index.crypt_Date!)
-                                pMode.wrappedValue.dismiss()
+//                                image = UIImage(data: index.crypt_Date!)
+//                                pMode.wrappedValue.dismiss()
+                            if index.key_agreement!.isEmpty {
+                                self.agreem = "not key_agreement"
+                            }else{
+                                self.agreem = "yes key_agreement"
                             }
+                            if index.key_public!.isEmpty {
+                                self.publik = "not key_public"
+                            }else{
+                                self.publik = "yes key_public"
+                            }
+                        }
                       
         //                        .offset(y: -11)
                         }
@@ -287,6 +298,8 @@ struct DataView: View {
 //                .frame(width: UIScreen.main.bounds.width / 1.1, height: UIScreen.main.bounds.height - 300, alignment: .center)
 //                .modifier(PrimaryButton())
             }
+                Text("agreem: \(agreem)")
+                Text("publik: \(publik)")
         }
     }
 }
