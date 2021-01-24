@@ -63,6 +63,14 @@ struct BlockView: View {
                     .foregroundColor(index == 3 ? .white : .black)
                     .offset(x: index == 1 ? 50 : 70)
                 Spacer()
+                VStack{
+                    Text("[ \(crypto.data_event!) ]   ")
+                        .offset(x: -20)
+                        .font(.custom("", size: 12))
+                    Text("[ \(crypto.date_term!) ]   ")
+                        .font(.custom("", size: 12))
+                        .offset(x: -20)
+                }
             }
             
         }

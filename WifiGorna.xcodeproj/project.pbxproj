@@ -25,8 +25,8 @@
 		CC416D3425B72FFA00FA9B8E /* ForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D3325B72FFA00FA9B8E /* ForView.swift */; };
 		CC416D9625B97C2200FA9B8E /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D9525B97C2200FA9B8E /* BlockView.swift */; };
 		CC416D9D25B9DF7200FA9B8E /* BlockWiFiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */; };
-		CC416DAE25BA8C8A00FA9B8E /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416DAD25BA8C8A00FA9B8E /* ColorService.swift */; };
-		CC416DB325BA8CC400FA9B8E /* ColorSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416DB225BA8CC400FA9B8E /* ColorSwitch.swift */; };
+		CC416E2D25BCB36300FA9B8E /* ColorSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416E2C25BCB36300FA9B8E /* ColorSwitch.swift */; };
+		CC416E3225BCB37100FA9B8E /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416E3125BCB37100FA9B8E /* ColorService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +71,8 @@
 		CC416D3325B72FFA00FA9B8E /* ForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForView.swift; sourceTree = "<group>"; };
 		CC416D9525B97C2200FA9B8E /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
 		CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockWiFiView.swift; sourceTree = "<group>"; };
-		CC416DAD25BA8C8A00FA9B8E /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorService.swift; path = ../../../../../ProbaBlockChane/ProbaBlockChane/ColorService.swift; sourceTree = "<group>"; };
-		CC416DB225BA8CC400FA9B8E /* ColorSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorSwitch.swift; path = ../../../../../ProbaBlockChane/ProbaBlockChane/ColorSwitch.swift; sourceTree = "<group>"; };
+		CC416E2C25BCB36300FA9B8E /* ColorSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSwitch.swift; sourceTree = "<group>"; };
+		CC416E3125BCB37100FA9B8E /* ColorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,8 +206,8 @@
 		CC416DAC25BA8C4200FA9B8E /* WiFi Model */ = {
 			isa = PBXGroup;
 			children = (
-				CC416DAD25BA8C8A00FA9B8E /* ColorService.swift */,
-				CC416DB225BA8CC400FA9B8E /* ColorSwitch.swift */,
+				CC416E3125BCB37100FA9B8E /* ColorService.swift */,
+				CC416E2C25BCB36300FA9B8E /* ColorSwitch.swift */,
 			);
 			path = "WiFi Model";
 			sourceTree = "<group>";
@@ -342,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC416D2825B6FA5500FA9B8E /* CryptoData_Array+CoreDataClass.swift in Sources */,
+				CC416E2D25BCB36300FA9B8E /* ColorSwitch.swift in Sources */,
 				CC416C9C25B4981F00FA9B8E /* ImageView.swift in Sources */,
 				CC416D3425B72FFA00FA9B8E /* ForView.swift in Sources */,
 				CC416D9625B97C2200FA9B8E /* BlockView.swift in Sources */,
@@ -350,11 +351,10 @@
 				CC416C3F25B4396A00FA9B8E /* DataView.swift in Sources */,
 				CC416C3725B4390100FA9B8E /* SendView.swift in Sources */,
 				CC416C3125B4365F00FA9B8E /* Button.swift in Sources */,
-				CC416DAE25BA8C8A00FA9B8E /* ColorService.swift in Sources */,
 				CC416BF625B42FFB00FA9B8E /* WifiGorna.xcdatamodeld in Sources */,
 				CC416C2025B431AF00FA9B8E /* Persistence.swift in Sources */,
 				CC416D9D25B9DF7200FA9B8E /* BlockWiFiView.swift in Sources */,
-				CC416DB325BA8CC400FA9B8E /* ColorSwitch.swift in Sources */,
+				CC416E3225BCB37100FA9B8E /* ColorService.swift in Sources */,
 				CC416BEC25B42FFB00FA9B8E /* ContentView.swift in Sources */,
 				CC416BEA25B42FFB00FA9B8E /* WifiGornaApp.swift in Sources */,
 			);

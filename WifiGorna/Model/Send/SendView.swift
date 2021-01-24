@@ -60,6 +60,10 @@ struct SendView: View {
          }
      }
     
+    @State var signingID       : String = ""
+    @State var agreementID     : String = ""
+  
+    
     @State var dateNow    : Date = Date()
     @State var dateFutuer : Date = Date()
     @State var selectedDateText : String = ""
@@ -176,12 +180,14 @@ struct SendView: View {
                                 
                                 if self.isOnOffSend {
                                     Button(action: {
-//                                        let imageToData = UIImage(named: "Ok")
-                                        let data = image?.jpegData(compressionQuality: 1.0)
-//                                        let data = "arda varda 1111".data(using: .utf8)
-    //                                    colorService.send(colorName: data!)
+
+//                                        let data = image?.jpegData(compressionQuality: 1.0)
+                                        self.signingID = ""
+                                        self.agreementID = ""
+                                        
+                                          colorService.sendToFistPeer(data: senderSigningPublic(), peerID: peer)
 //                                        colorService.sendToFistPeer(data: data!, peerID: peer)
-                                        colorService.send(data: data!)
+//                                        colorService.send(data: data!)
                                         print("tap ..")
                                         
                                     }) {
@@ -220,6 +226,14 @@ struct SendView: View {
                     }
                     
                 }
+                Text("signingID :\(signingID )")
+                    .onTapGesture {
+                        self.signingID = ""
+                    }
+                Text("agreementID  :\(agreementID  )")
+                    .onTapGesture {
+                        self.agreementID = ""
+                    }
 //                Text("arda - \(text)")
 //                 ardaImage
 //                    .resizable()
@@ -233,6 +247,48 @@ struct SendView: View {
           
         }
     }
+    
+    func senderSigningPublic() -> Data {
+        let model = Model(peerID: privateID_Key.publicKey.rawRepresentation, massige: Data(),isSender: true)
+        let modelData = try! JSONEncoder().encode(model)
+       return modelData
+    }
+    
+    func keyAgreenentPublic() -> Data {
+        let model = Model(peerID: privateAgreement_Key.publicKey.rawRepresentation, massige: Data(),isSender: false)
+        let modelData = try! JSONEncoder().encode(model)
+       return modelData
+    }
+    
+    func senderData() -> Data {
+        
+        let data = image?.jpegData(compressionQuality: 1.0)
+        
+        let model = Model(peerID: Data(), massige: data!, isSender: true)
+        
+        let modelData = try! JSONEncoder().encode(model)
+       return modelData
+    }
+    func saveToCoreData() {
+        let data = image?.jpegData(compressionQuality: 1.0)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy"
+//                    self.selectedDateText = formatter.string(from: self.dateNow)
+        
+        let textData = CryptoData_Array(context: moc)
+            textData.name_Title = "My Phone Send"
+            textData.crypt_Date = data
+            textData.data_event = formatter.string(from: self.dateNow)
+            textData.date_term = formatter.string(from: self.dateFutuer)
+            textData.index_F   = String(3)
+
+          
+        do {
+                 try self.moc.save()
+        }catch {}
+    }
+    
     private func setDateString() {
       let formatter = DateFormatter()
       formatter.dateFormat = "MMM dd, yyyy"
