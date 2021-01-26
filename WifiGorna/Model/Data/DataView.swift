@@ -185,7 +185,13 @@ struct DataView: View {
                                     image = UIImage(data: decryptedMessage!)
                                     pMode.wrappedValue.dismiss()
                                 }else{
-                                    
+                                    if index.index_F == "3" {
+                                        image = UIImage(data: index.crypt_Date!)
+                                        pMode.wrappedValue.dismiss()
+                                    }else{
+                                        image = UIImage(named: "Ok")
+                                        pMode.wrappedValue.dismiss()
+                                    }
                                 }
 
 //                            if index.key_agreement!.isEmpty {
