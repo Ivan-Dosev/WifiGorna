@@ -271,8 +271,11 @@ struct SendView: View {
     func senderData() -> Data {
         
         let data = image?.jpegData(compressionQuality: 1.0)
+        let receiverEncryptionPublicKey = try! Curve25519.KeyAgreement.PublicKey(rawRepresentation: agreement__ID)
+        let sealedMessage = try! encrypt(data!, to: receiverEncryptionPublicKey, signedBy: privateID_Key)
         
-        let model = Model(peerID: Data(), massige: data!, isSender: true,dateNow: dateNow, dateFutuer: dateFutuer)
+//        let model = Model(peerID: Data(), massige: data!, isSender: true,dateNow: dateNow, dateFutuer: dateFutuer)
+        let model = Model(peerID: Data(), massige: sealedMessage, isSender: true,dateNow: dateNow, dateFutuer: dateFutuer)
         
         let modelData = try! JSONEncoder().encode(model)
        return modelData

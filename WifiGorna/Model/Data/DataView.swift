@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CryptoKit
 
 struct DataView: View {
     
@@ -177,18 +178,26 @@ struct DataView: View {
                         ForEach(Array(zip(cryptoDataArray.indices ,cryptoDataArray.filter{$0.index_F?.contains(String(self.pickerNumber)) as! Bool})),id:\.0) { ( number , index ) in
                             BlockView(number: number, crypto: index)
                             .onTapGesture {
-//                                image = UIImage(data: index.crypt_Date!)
-//                                pMode.wrappedValue.dismiss()
-                            if index.key_agreement!.isEmpty {
-                                self.agreem = "not key_agreement"
-                            }else{
-                                self.agreem = "yes key_agreement"
-                            }
-                            if index.key_public!.isEmpty {
-                                self.publik = "not key_public"
-                            }else{
-                                self.publik = "yes key_public"
-                            }
+                                if index.index_F == "1" {
+                                    let receiverEncryptionKey  = try! Curve25519.KeyAgreement.PrivateKey(rawRepresentation: index.key_agreement!)
+                                    let senderSigningPublicKey =   try! Curve25519.Signing.PublicKey(rawRepresentation: index.key_public!)
+                                    let decryptedMessage = try? decrypt( index.crypt_Date!, using: receiverEncryptionKey, from: senderSigningPublicKey)
+                                    image = UIImage(data: decryptedMessage!)
+                                    pMode.wrappedValue.dismiss()
+                                }else{
+                                    
+                                }
+
+//                            if index.key_agreement!.isEmpty {
+//                                self.agreem = "not key_agreement"
+//                            }else{
+//                                self.agreem = "yes key_agreement"
+//                            }
+//                            if index.key_public!.isEmpty {
+//                                self.publik = "not key_public"
+//                            }else{
+//                                self.publik = "yes key_public"
+//                            }
                         }
                       
         //                        .offset(y: -11)

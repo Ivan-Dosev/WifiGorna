@@ -27,7 +27,7 @@
 		CC416D9D25B9DF7200FA9B8E /* BlockWiFiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */; };
 		CC416E2D25BCB36300FA9B8E /* ColorSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416E2C25BCB36300FA9B8E /* ColorSwitch.swift */; };
 		CC416E3225BCB37100FA9B8E /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416E3125BCB37100FA9B8E /* ColorService.swift */; };
-		CC416E3A25BE7C5400FA9B8E /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416E3925BE7C5400FA9B8E /* Crypto.swift */; };
+		CC416E3F25BF331400FA9B8E /* CryptoCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC416E3E25BF331400FA9B8E /* CryptoCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,7 @@
 		CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockWiFiView.swift; sourceTree = "<group>"; };
 		CC416E2C25BCB36300FA9B8E /* ColorSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSwitch.swift; sourceTree = "<group>"; };
 		CC416E3125BCB37100FA9B8E /* ColorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
-		CC416E3925BE7C5400FA9B8E /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		CC416E3E25BF331400FA9B8E /* CryptoCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				CC416C3625B4390100FA9B8E /* SendView.swift */,
-				CC416E3925BE7C5400FA9B8E /* Crypto.swift */,
+				CC416E3E25BF331400FA9B8E /* CryptoCode.swift */,
 				CC416D9C25B9DF7200FA9B8E /* BlockWiFiView.swift */,
 				CC416DAC25BA8C4200FA9B8E /* WiFi Model */,
 			);
@@ -348,7 +348,6 @@
 				CC416E2D25BCB36300FA9B8E /* ColorSwitch.swift in Sources */,
 				CC416C9C25B4981F00FA9B8E /* ImageView.swift in Sources */,
 				CC416D3425B72FFA00FA9B8E /* ForView.swift in Sources */,
-				CC416E3A25BE7C5400FA9B8E /* Crypto.swift in Sources */,
 				CC416D9625B97C2200FA9B8E /* BlockView.swift in Sources */,
 				CC416D2925B6FA5500FA9B8E /* CryptoData_Array+CoreDataProperties.swift in Sources */,
 				CC416C2C25B434AB00FA9B8E /* FirstView.swift in Sources */,
@@ -361,6 +360,7 @@
 				CC416E3225BCB37100FA9B8E /* ColorService.swift in Sources */,
 				CC416BEC25B42FFB00FA9B8E /* ContentView.swift in Sources */,
 				CC416BEA25B42FFB00FA9B8E /* WifiGornaApp.swift in Sources */,
+				CC416E3F25BF331400FA9B8E /* CryptoCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

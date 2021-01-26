@@ -69,7 +69,18 @@ extension SendView : ColorServiceDelegate {
                     
                     let textData = CryptoData_Array(context: moc)
                         textData.name_Title    = peer.displayName
-                        textData.key_agreement = self.agreement__ID
+                    
+                    if self.agreement__ID.isEmpty {
+                                          textData.key_agreement = privateAgreement_Key.rawRepresentation
+                    }else{
+                                          textData.key_agreement = self.agreement__ID
+                    }
+                    if self.signing__ID.isEmpty {
+                                          textData.key_public    = privateID_Key.publicKey.rawRepresentation
+                    }else {
+                                          textData.key_public    = self.signing__ID
+                    }
+                     
                         textData.key_public    = self.signing__ID
                         textData.crypt_Date    = dataFromModel.massige
                         textData.data_event    = formatter.string(from: dataFromModel.dateNow)
@@ -88,7 +99,7 @@ extension SendView : ColorServiceDelegate {
                     self.peerString = peer.displayName
                     print("\(dataModel)")
        
-                    ardaImage = Image(uiImage:  UIImage(data: dataFromModel.massige)!)
+//                    ardaImage = Image(uiImage:  UIImage(data: dataFromModel.massige)!)
                     
                     
 //                    colorService.sendToFistPeer(data: answerData(), peerID: peer)
